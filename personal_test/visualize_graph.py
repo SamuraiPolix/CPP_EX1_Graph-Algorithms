@@ -42,7 +42,7 @@ def visualize_graph(adj_matrix, directed=False):
 # ]
 
 
-adj_matrix = [ [0, 1, 2, 0, 0], [1, 0, 3, 0, 0], [2, 3, 0, 4, 0], [0, 0, 4, 0, 5], [0, 0, 0, 5, 0] ]
+adj_matrix = [ [0, 1, 0, 0, 0], [1, 0, 3, 0, 0], [0, 3, 0, 4, 0], [0, 0, 4, 0, 5], [0, 0, 0, 5, 0] ]
 
 # print(is_bipartite(adj_matrix))
 # visualize_graph(adj_matrix, False)

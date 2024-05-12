@@ -79,36 +79,13 @@ namespace ariel{
         // sort of BFS on the graph
         for (size_t ind = 0; ind < graph.getSize(); ++ind) {
             if (color[ind] == "WHITE") {
-                queue<size_t> queue;
-                color[ind] = "BLUE";
-                setA.push_back(ind); // Add the starting vertex to setA
-                queue.push(ind);         // push starting vertex to queue
-
-                while (!queue.empty()) {
-                    size_t vertice = queue.front();
-                    queue.pop();
-
-                    for (size_t neighbor = 0; neighbor < graph.getSize(); ++neighbor) {
-                        if (graph.getWeight(vertice, neighbor) != 0) {
-                            if (color[neighbor] == "WHITE") {
-                                color[neighbor] = (color[vertice] == "BLUE") ? "RED" : "BLUE";
-                                queue.push(neighbor);
-
-                                // Add the vertex to its set based on its color
-                                if (color[neighbor] == "RED") {
-                                    setB.push_back(neighbor);
-                                } else {
-                                    setA.push_back(neighbor);
-                                }
-                            } else if (color[neighbor] == color[vertice]) {
-                                // If adjacent vertices have the same color, the graph is not bipartite
-                                return "0";
-                            }
-                        }
-                    }
+                if (!bfsBipartite(graph, color, setA, setB, ind)){
+                    return "0"; // The graph is not bipartite
                 }
             }
         }
+
+        // if we reached here, the graph is bipartite
 
         // Build the result string
         result += "The graph is bipartite: A={";
@@ -213,6 +190,38 @@ namespace ariel{
             }
         }
         return false; // No cycle found
+    }
+
+    bool Algorithms::bfsBipartite(Graph& graph, vector<string>& color, vector<size_t>& setA, vector<size_t>& setB, size_t start) {
+        queue<size_t> queue;
+        color[start] = "BLUE";
+        setA.push_back(start); // Add the starting vertex to setA
+        queue.push(start);         // push starting vertex to queue
+
+        while (!queue.empty()) {
+            size_t vertice = queue.front();
+            queue.pop();
+
+            for (size_t neighbor = 0; neighbor < graph.getSize(); ++neighbor) {
+                if (graph.getWeight(vertice, neighbor) != 0) {
+                    if (color[neighbor] == "WHITE") {
+                        color[neighbor] = (color[vertice] == "BLUE") ? "RED" : "BLUE";
+                        queue.push(neighbor);
+
+                        // Add the vertex to its set based on its color
+                        if (color[neighbor] == "RED") {
+                            setB.push_back(neighbor);
+                        } else {
+                            setA.push_back(neighbor);
+                        }
+                    } else if (color[neighbor] == color[vertice]) {
+                        // If adjacent vertices have the same color, the graph is not bipartite
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;        // The graph is bipartite
     }
 
     string Algorithms::isContainsCycle(Graph graph) {

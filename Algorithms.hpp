@@ -63,6 +63,18 @@ namespace ariel{
          */
         static int relaxEdges(Graph, vector<int>&, vector<size_t>&);
 
+        /*
+         * Gets a graph and a vertice, and runs a DFS visit on it.
+         * Returns true if a cycle was found, false otherwise.
+         * Updates visited and path vectors, allowing us to track the cycle.
+         */
         static bool dfsVisit(Graph, size_t, vector<bool>&, vector<size_t>&, vector<size_t>&);
+
+        /*
+         * Gets a graph and a start vertice, and runs a BFS on it.
+         * Used to check if the graph is bipartite - Updates setA and setB with the vertices.
+         * Returns "1" if the graph is bipartite, "0" otherwise.
+         */
+        static bool bfsBipartite(Graph&, vector<string>&, vector<size_t>&, vector<size_t>&, size_t);
     };
 }
