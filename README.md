@@ -2,6 +2,8 @@
 #### (Systems Programming B @ Ariel University)
 #### Author: Samuel Lazareanu (sam.lazareanu@gmail.com)
 
+[Link to Assignment](ASSIGNMENT.md)
+
 This repository contains C++ implementations of graph algorithms. The graph is represented using an adjacency matrix.
 
 The algorithms are designed to handle both directed and undirected graphs and weighted or unweighted.
@@ -75,4 +77,3 @@ The `personal_test` folder includes the file `visualize_graph.py`, which can be 
 Example for graph3 in `demo.cpp`:
 
 <img src="https://github.com/SamuraiPolix/CPP_EX1/assets/52662032/afdfc2e8-1546-4375-9792-bf3c94ee4407" alt="image" width="400">
-
