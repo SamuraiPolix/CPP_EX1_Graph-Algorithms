@@ -68,3 +68,11 @@ A graph is represented using an adjacency matrix.
    - `make valgrind` - makes sure there are no memory leaks/problems.
 
 If you want to use the implemented functions by yourself, see the `demo.cpp` file for run exmaples.
+
+### Personal Test Folder
+The `personal_test` folder includes the file `visualize_graph.py`, which can be used to visualize graphs and write good tests for them. This Python script complements the C++ implementations by providing a visualization tool.
+
+Example for graph3 in `demo.cpp`:
+
+<img src="https://github.com/SamuraiPolix/CPP_EX1/assets/52662032/afdfc2e8-1546-4375-9792-bf3c94ee4407" alt="image" width="400">
+
